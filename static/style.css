@@ -1,0 +1,169 @@
+/********** General **********/
+@media screen and (min-width: 0px) {
+
+    /* Variables */
+    :root {
+        --font-family: "Roboto", sans-serif;
+        --color-one: hsl(240, 0%, 95%);
+        --color-two: hsl(240, 0%, 75%);
+        --color-three: hsl(240, 0%, 55%);
+        --color-four: hsl(240, 0%, 35%);
+        --color-five: hsl(240, 0%, 15%);
+        --primary-color: hsl(240, 55%, 55%);
+        --delete-button: hsl(0, 55%, 55%);
+        --highlight: hsl(30, 95%, 55%);
+    }
+
+    /* CSS Resets */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background-color: var(--color-one);
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--color-five);
+    }
+
+    a:hover {
+        color: var(--secondary-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: var(--color-five);
+    }
+
+    h1 {
+        font-size: 72px;
+    }
+
+    h2 {
+        font-size: 60px;
+
+    }
+
+    h3 {
+        font-size: 48px;
+    }
+
+    h4 {
+        font-size: 36px;
+    }
+
+    h5 {
+        font-size: 30px;
+    }
+
+    h6 {
+        font-size: 24px;
+    }
+
+    p {
+        line-height: 1.5rem;
+    }
+
+    section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .greeting {
+        text-align: center;
+    }
+}
+
+/********** List **********/
+@media screen and (min-width: 0px) {
+    .container {
+        border-radius: 5px;
+        max-width: 550px;
+        margin: 80px auto;
+        padding: 10px;
+        background-color: var(--color-two);
+        box-shadow: 5px 5px 5px var(--color-three);
+    }
+
+    .input-form {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: var(--primary-color);
+    }
+
+    button,
+    .newList {
+        border-radius: 5px;
+        height: 25px;
+    }
+
+    button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .list {
+        margin: auto;
+    }
+
+    .row {
+        max-width: 525px;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--color-one);
+        transition: all .2s ease-in-out
+    }
+
+    .row:hover {
+        /* transform: scale(1.03); */
+        /* background-color: var(--highlight); */
+        /* color: var(--color-one); */
+        cursor: grab;
+    }
+
+    .row:active {
+        cursor: grabbing;
+    }
+
+    .dragging {
+        transform: scale(1.03);
+        background-color: var(--highlight);
+        color: var(--color-one);
+    }
+
+    .check {
+        width: 30px;
+    }
+
+    .item {
+        width: 60%;
+    }
+
+    .delete {
+        background-color: var(--delete-button);
+    }
+
+    .done {
+        text-decoration: line-through;
+        color: var(--color-five);
+    }
+}

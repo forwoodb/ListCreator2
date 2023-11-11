@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header>
+  
+</header>
+<main>
+  {% if user.is_authenticated %}
+  <section id="list">
+    <div class="container">
+      <h4 class="greeting">Hello, {{ user.username }}</h4>
+      {% if user.is_authenticated %}
+      <p><a href="{% url 'logout' %}">Log Out</a></p>
+      {% endif %}
+      <form  class="input-form" action="add_list/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <!-- <input class="newList" type="text" name="list-name"> -->
+        <button type="submit">Add List</button>
+      </form>
+      <div class="list">
+
+        {% for l in lists %}
+
+        <div class="row" draggable="true">
+          <input class="check" type="checkbox" autocomplete="off">
+          <span class="item"><a href="list_page/{{l.id}}/">{{ l.list_name }}</a></span>
+          <form action="delete_list/{{l.id}}/" method="post">
+            {% csrf_token %}
+            <button class="delete" type="submit">Delete</button>
+          </form>
+          <!-- <form action="edit_list/{{l.id}}/"> -->
+          <form action="edit_list/{{l.id}}/">
+            <button>Edit</button>
+          </form>
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+  {% else %}
+  <div class="container">
+    <p>You are not logged in.</p>
+    <p><a href="{% url 'signup' %}">Sign Up</a></p>
+    <p><a href="{% url 'login' %}">Log In</a></p>
+    <form action="{% url 'demo_login' %}" method="post">
+      {% csrf_token %}
+      <input type="submit" value="Demo Login" class="">
+    </form>
+  </div>
+  {% endif %}
+</main>
+<footer></footer>
+
+{% endblock content %}

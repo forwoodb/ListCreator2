@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header></header>
+<main>
+  <section id="list_name">
+    <div class="container">
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}">Log Out</a>
+      {% endif %}
+      <h5>{{list_name.list_name}}</h5>
+      <form class="input-form" action="/add_item/{{list_name.id}}/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <!-- <input class="newList" type="text" name="list_name-name"> -->
+        <button type="submit">Add Item</button>
+        <a href="/">Save List</a>
+      </form>
+      <div class="list_name">
+
+        {% for i in list_items %}
+
+        <div class="row" draggable="true">
+          <input class="check" type="checkbox" autocomplete="off">
+          <span class="item">{{ i.list_item }}</span>
+          <form action="/list_page/{{list_name.id}}/delete_item/{{i.id}}/" method="post">
+            {% csrf_token %}
+            <button class="delete" type="submit">Delete</button>
+          </form>
+          <form action="/list_page/{{list_name.id}}/edit_item/{{i.id}}/">
+            <button>Edit</button>
+          </form>
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+</main>
+<footer></footer>
+
+{% endblock content %}

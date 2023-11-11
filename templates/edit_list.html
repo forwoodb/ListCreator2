@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- function based view form -->
+<form action="/update_list/{{list_name.id}}/" method="post">
+  {% csrf_token %}
+  {{form}}
+  <button type="submit">Update</button>
+</form>
+
+{% endblock content %}
